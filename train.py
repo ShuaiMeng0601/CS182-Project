@@ -17,11 +17,12 @@ def main(cfg_path):
     dl = DataLoader(ds, batch_size=cfg["train"]["batch_size"], shuffle=True)
 
     model = VAE(
-        input_dim=cfg["model"]["input_dim"],
-        latent_dim=cfg["model"]["latent_dim"],
-        enc_ch=cfg["model"]["encoder_channels"],
-        dec_ch=cfg["model"]["decoder_channels"]
-    ).to(cfg["train"]["device"])
+    seq_len=cfg["model"]["seq_len"],
+    action_dim=cfg["model"]["action_dim"],
+    latent_dim=cfg["model"]["latent_dim"],
+    enc_channels=cfg["model"]["encoder_channels"],
+    dec_channels=cfg["model"]["decoder_channels"]
+    ).to(device)
 
     opt = torch.optim.Adam(model.parameters(), lr=cfg["train"]["lr"])
     device = cfg["train"]["device"]
