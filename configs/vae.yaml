@@ -1,0 +1,19 @@
+# configs/vae.yaml
+model:
+  input_dim: 510          # roughly 51 * 10, adjust according to processed data
+  latent_dim: 64
+  hidden_dim: 256
+  encoder_channels: [64, 128, 256]
+  decoder_channels: [256, 128, 64]
+
+train:
+  batch_size: 64
+  lr: 1e-3
+  epochs: 50
+  grad_clip: 1.0
+  device: "cuda"
+
+data:
+  dataset_path: "data/processed/train.pkl"
+  seq_len: 51
+  action_dim: 10
